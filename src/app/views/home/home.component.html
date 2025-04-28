@@ -1,0 +1,29 @@
+<p>home works!</p>
+
+<h1>MOVIMIENTOS</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Descripcion</th>
+      <th>Cantidad</th>
+      <th>Moneda</th>
+      <th>Categoria</th>
+      <th>Fecha</th>
+      <th>Usuario</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (movement of movements; track movement.id) {
+    <tr>
+      <td>{{ movement.id }}</td>
+      <td>{{ movement.description }}</td>
+      <td>{{ movement.amount }}</td>
+      <td>{{ movement.currency }}</td>
+      <td>{{ movement.category }}</td>
+      <td>{{ movement.date }}</td>
+      <td>{{ movement.user }}</td>
+    </tr>
+    }
+  </tbody>
+</table>

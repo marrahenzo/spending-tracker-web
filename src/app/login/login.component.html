@@ -1,0 +1,52 @@
+<div id="login-component">
+  <div id="background"></div>
+  <p id="title">Spending Tracker</p>
+  <form
+    [formGroup]="form"
+    id="login-form"
+    class="form"
+    action=""
+    (submit)="submitForm()"
+  >
+    <p id="login-title">Log in</p>
+
+    <label for="username" class="form-label">Username</label>
+    <input
+      formControlName="username"
+      type="text"
+      id="username"
+      class="form-control"
+    />
+    @if(isFieldValid("username")) {
+    <small class="form-error">Field is required</small>
+    }
+
+    <label for="password" class="form-label">Password</label>
+    <input
+      formControlName="password"
+      type="password"
+      id="password"
+      class="form-control"
+    />
+    @if(isFieldValid("password")) {
+    <small class="form-error">Field is required</small>
+    }
+
+    <button
+      type="button"
+      id="login-form-button"
+      class="btn"
+      (click)="submitForm()"
+    >
+      Submit
+    </button>
+
+    <p
+      [routerLink]="['/signup']"
+      routerLinkActive="router-link-active"
+      id="login-signup"
+    >
+      No account? Sign up here
+    </p>
+  </form>
+</div>
