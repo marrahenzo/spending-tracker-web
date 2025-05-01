@@ -3,10 +3,13 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { MovementDetailComponent } from './views/movement-detail/movement-detail.component';
 import { HomeComponent } from './views/home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
   {
     path: '',
+    component: NavbarComponent,
     children: [
       {
         path: '',
