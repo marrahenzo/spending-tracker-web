@@ -10,36 +10,39 @@
   >
     <p id="login-title">Log in</p>
 
-    <label for="username" class="form-label">Username</label>
-    <input
-      formControlName="username"
-      type="text"
-      id="username"
-      class="form-control"
-    />
-    @if(isFieldValid("username")) {
-    <small class="form-error">Field is required</small>
-    }
+    <div class="input">
+      <p-floatlabel>
+        <label for="username" class="form-label">Username</label>
+        <input
+          pInputText
+          formControlName="username"
+          type="text"
+          id="username"
+        />
+      </p-floatlabel>
+      @if(isFieldValid("username")) {
+      <small class="form-error">Field is required</small>
+      }
+    </div>
 
-    <label for="password" class="form-label">Password</label>
-    <input
-      formControlName="password"
-      type="password"
-      id="password"
-      class="form-control"
-    />
-    @if(isFieldValid("password")) {
-    <small class="form-error">Field is required</small>
-    }
+    <div class="input">
+      <p-floatlabel>
+        <label for="password" class="form-label">Password</label>
+        <input
+          pInputText
+          formControlName="password"
+          type="password"
+          id="password"
+        />
+      </p-floatlabel>
+      @if(isFieldValid("password")) {
+      <small class="form-error">Field is required</small>
+      }
+    </div>
 
-    <button
-      type="button"
-      id="login-form-button"
-      class="btn"
-      (click)="submitForm()"
-    >
+    <p-button type="button" id="login-form-button" (click)="submitForm()">
       Submit
-    </button>
+    </p-button>
 
     <p
       [routerLink]="['/signup']"

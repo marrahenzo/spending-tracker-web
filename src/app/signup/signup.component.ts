@@ -6,13 +6,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../services/auth-service.service';
+import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-signup',
-  standalone: true,
-  imports: [RouterModule, ReactiveFormsModule],
+  imports: [RouterModule, ReactiveFormsModule, FloatLabelModule, ButtonModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
 })

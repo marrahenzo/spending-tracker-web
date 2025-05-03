@@ -1,0 +1,23 @@
+#home-container {
+  background-color: black;
+  height: 100vh;
+  padding: 10px;
+}
+
+#operation-table-container {
+  border-radius: 10px !important;
+  padding: 5px;
+  background-color: var(--p-datatable-header-cell-background);
+  max-width: 70rem;
+
+  h1 {
+    color: white;
+    text-align: center;
+    margin: 0px auto;
+  }
+}
+
+button.dialogButton {
+  background-color: white !important;
+  color: black !important;
+}

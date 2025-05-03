@@ -10,45 +10,38 @@
   >
     <p id="login-title">Sign up</p>
 
-    <label for="name" class="form-label">Name</label>
-    <input formControlName="name" type="text" id="name" class="form-control" />
+    <p-floatlabel class="input">
+      <label for="name" class="form-label">Name</label>
+      <input formControlName="name" type="text" id="name" />
+    </p-floatlabel>
     @if(isFieldValid("name")) {
     <small class="form-error">Field is required</small>
     }
 
-    <label for="username" class="form-label">Username</label>
-    <input
-      formControlName="username"
-      type="text"
-      id="username"
-      class="form-control"
-    />
+    <p-floatlabel class="input">
+      <label for="username" class="form-label">Username</label>
+      <input formControlName="username" type="text" id="username" />
+    </p-floatlabel>
     @if(isFieldValid("username")) {
     <small class="form-error">Field is required</small>
     }
 
-    <label for="password" class="form-label">Password</label>
-    <input
-      formControlName="password"
-      type="password"
-      id="password"
-      class="form-control"
-    />
+    <p-floatlabel class="input">
+      <label for="password" class="form-label">Password</label>
+      <input formControlName="password" type="password" id="password" />
+    </p-floatlabel>
     @if(isFieldValid("password")) {
     <small class="form-error">Field is required</small>
     }
 
-    <label for="repeat-password" class="form-label">Repeat Password</label>
-    <input type="password" id="repeat-password" class="form-control" />
+    <p-floatlabel class="input">
+      <label for="repeat-password" class="form-label">Repeat Password</label>
+      <input type="password" id="repeat-password" />
+    </p-floatlabel>
 
-    <button
-      type="button"
-      id="login-form-button"
-      class="btn"
-      (click)="submitForm()"
-    >
+    <p-button type="button" id="login-form-button" (click)="submitForm()">
       Submit
-    </button>
+    </p-button>
 
     <p
       [routerLink]="['/login']"

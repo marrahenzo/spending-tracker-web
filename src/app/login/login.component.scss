@@ -35,19 +35,22 @@
   padding: 0px 20px 0px 20px;
   width: 400px;
 
-  input {
-    margin-bottom: 10px;
+  .input {
+    margin-bottom: 30px;
+    width: 100%;
+
+    input {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .form-error {
+      margin-bottom: 10px;
+    }
   }
 
-  .form-error {
-    margin-bottom: 10px;
-  }
-
-  button {
-    background-color: rgb(154, 255, 154);
-    border: 2px solid rgb(111, 188, 111);
+  p-button {
     font-family: "Roboto";
-    color: rgb(65, 114, 65);
     transition: all 0.1s ease-in-out;
     margin-bottom: 20px;
 

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { MovementDetailComponent } from './views/movement-detail/movement-detail.component';
+import { OperationDetailComponent } from './views/operation-detail/operation-detail.component';
 import { HomeComponent } from './views/home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppComponent } from './app.component';
@@ -21,8 +21,8 @@ export const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'movement-detail/{id}',
-        component: MovementDetailComponent,
+        path: 'operation-detail/{id}',
+        component: OperationDetailComponent,
       },
     ],
   },

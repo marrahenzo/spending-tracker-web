@@ -1,29 +1,70 @@
-<p>home works!</p>
+<div id="home-container">
+  <div id="operation-table-container">
+    <div class="d-flex">
+      <p-button
+        label="New Operation"
+        icon="pi pi-plus"
+        class="mr-2"
+        text
+        severity="secondary"
+        [raised]="true"
+        (onClick)="editOperation()"
+      />
+      <h1>Operations</h1>
+    </div>
+    <p-table
+      [value]="operations"
+      [tableStyle]="{
+        'min-width': '50rem',
+        'max-width': '70rem',
+        'border-radius': '20px'
+      }"
+    >
+      <ng-template #header>
+        <tr>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Currency</th>
+          <th>Category</th>
+          <th>Date</th>
+          <th>User</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-operation>
+        <tr>
+          <td>{{ operation.description ? operation.description : "--" }}</td>
+          <td class="text-end">{{ operation.amount | currency }}</td>
+          <td>{{ getCurrencyDisplayName(operation.currency) }}</td>
+          <td>
+            {{ operation.category?.name ? operation.category?.name : "--" }}
+          </td>
+          <td>{{ operation.date | date : "dd/MM/yyyy" }}</td>
+          <td>{{ operation.user }}</td>
+          <td>
+            <div class="d-flex justify-content-around">
+              <p-button
+                icon="pi pi-trash"
+                severity="contrast"
+                (onClick)="promptDeleteOperation($event, operation.id)"
+              ></p-button>
+              <p-button
+                icon="pi pi-pencil"
+                severity="contrast"
+                (onClick)="editOperation(operation.id)"
+              ></p-button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
 
-<h1>MOVIMIENTOS</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Descripcion</th>
-      <th>Cantidad</th>
-      <th>Moneda</th>
-      <th>Categoria</th>
-      <th>Fecha</th>
-      <th>Usuario</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (movement of movements; track movement.id) {
-    <tr>
-      <td>{{ movement.id }}</td>
-      <td>{{ movement.description }}</td>
-      <td>{{ movement.amount }}</td>
-      <td>{{ movement.currency }}</td>
-      <td>{{ movement.category }}</td>
-      <td>{{ movement.date }}</td>
-      <td>{{ movement.user }}</td>
-    </tr>
-    }
-  </tbody>
-</table>
+<p-confirmpopup />
+
+<app-new-operation-modal
+  [operationModalVisible]="operationModalVisible"
+  [currentOperationId]="currentOperationId"
+  #newOperationModal
+></app-new-operation-modal>

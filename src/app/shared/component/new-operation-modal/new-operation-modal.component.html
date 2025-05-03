@@ -1,0 +1,68 @@
+<p-dialog
+  header="New Operation"
+  [modal]="true"
+  [(visible)]="operationModalVisible"
+  [style]="{ width: '25rem' }"
+>
+  <form [formGroup]="newOperationForm">
+    <div class="input">
+      <p-floatlabel>
+        <label for="amount">Amount</label>
+        <input pInputText formControlName="amount" type="text" id="amount" />
+      </p-floatlabel>
+      @if(isFieldInvalid("amount")) {
+      <small class="form-error">Field is required</small>
+      }
+    </div>
+    <div class="input">
+      <p-floatlabel>
+        <label for="currency">Currency</label>
+        <p-select
+          formControlName="currency"
+          [options]="currencies"
+          optionLabel="displayName"
+          optionValue="name"
+          name="currency"
+          id="currency"
+          placeholder="Currency"
+        >
+        </p-select>
+      </p-floatlabel>
+    </div>
+    <div class="input">
+      <p-floatlabel>
+        <label for="category">Category</label>
+        <p-select
+          formControlName="category"
+          [options]="categories"
+          optionLabel="name"
+          optionValue="id"
+          name="category"
+          id="category"
+          placeholder="Category"
+          [showClear]="true"
+        >
+        </p-select>
+      </p-floatlabel>
+    </div>
+    <div class="input">
+      <p-floatlabel>
+        <label for="description">Description</label>
+        <input
+          pInputText
+          formControlName="description"
+          type="text"
+          id="description"
+        />
+      </p-floatlabel>
+    </div>
+    <div class="flex justify-end gap-2">
+      <p-button
+        label="Cancel"
+        severity="secondary"
+        (onClick)="closeOperationModal()"
+      />
+      <p-button label="Save" (onClick)="saveOperation()" />
+    </div>
+  </form>
+</p-dialog>
