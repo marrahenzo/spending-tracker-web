@@ -4,7 +4,26 @@
   padding: 10px;
 }
 
+#card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin: 20px 0px;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  max-height: 70%;
+  align-items: center;
+  justify-content: center;
+}
+
 #operation-table-container {
+  flex: 2;
   border-radius: 10px !important;
   padding: 5px;
   background-color: var(--p-datatable-header-cell-background);
@@ -15,6 +34,17 @@
     text-align: center;
     margin: 0px auto;
   }
+
+  #new-operation-button {
+    position: absolute;
+  }
+}
+
+#chart-container {
+  flex: 0.3;
+  border-radius: 10px !important;
+  padding: 5px;
+  background-color: var(--p-datatable-header-cell-background);
 }
 
 button.dialogButton {

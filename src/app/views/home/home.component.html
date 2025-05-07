@@ -1,70 +1,84 @@
 <div id="home-container">
-  <div id="operation-table-container">
-    <div class="d-flex">
-      <p-button
-        label="New Operation"
-        icon="pi pi-plus"
-        class="mr-2"
-        text
-        severity="secondary"
-        [raised]="true"
-        (onClick)="editOperation()"
-      />
-      <h1>Operations</h1>
+  <div id="card-container">
+    <p-card header="Account Balance" [style]="{ width: '500px' }">
+      <p style="color: white; font-size: 64px">
+        {{ accountBalance | currency }}
+      </p>
+    </p-card>
+    <p-card header="Total spent this month" [style]="{ width: '500px' }">
+      <p style="color: white; font-size: 64px">
+        {{ accountBalance | currency }}
+      </p>
+    </p-card>
+  </div>
+  <div id="main-container">
+    <div id="operation-table-container">
+      <div class="d-flex">
+        <p-button
+          id="new-operation-button"
+          label="New Operation"
+          icon="pi pi-plus"
+          class="mr-2"
+          text
+          severity="secondary"
+          [raised]="true"
+          (onClick)="editOperation()"
+        />
+        <h1>Operations</h1>
+      </div>
+      <p-table
+        [value]="operations"
+        [tableStyle]="{
+          'min-width': '50rem',
+          'max-width': '70rem',
+          'border-radius': '20px'
+        }"
+      >
+        <ng-template #header>
+          <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Currency</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>User</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-operation>
+          <tr>
+            <td>{{ operation.description ? operation.description : "--" }}</td>
+            <td class="text-end">{{ operation.amount | currency }}</td>
+            <td>{{ getCurrencyDisplayName(operation.currency) }}</td>
+            <td>
+              {{ operation.category?.name ? operation.category?.name : "--" }}
+            </td>
+            <td>{{ operation.date | date : "dd/MM/yyyy" }}</td>
+            <td>{{ operation.user }}</td>
+            <td>
+              <div class="d-flex justify-content-around">
+                <p-button
+                  icon="pi pi-trash"
+                  severity="contrast"
+                  (onClick)="promptDeleteOperation($event, operation.id)"
+                ></p-button>
+                <p-button
+                  icon="pi pi-pencil"
+                  severity="contrast"
+                  (onClick)="editOperation(operation.id)"
+                ></p-button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
-    <p-table
-      [value]="operations"
-      [tableStyle]="{
-        'min-width': '50rem',
-        'max-width': '70rem',
-        'border-radius': '20px'
-      }"
-    >
-      <ng-template #header>
-        <tr>
-          <th>Description</th>
-          <th>Amount</th>
-          <th>Currency</th>
-          <th>Category</th>
-          <th>Date</th>
-          <th>User</th>
-          <th class="text-center">Actions</th>
-        </tr>
-      </ng-template>
-      <ng-template #body let-operation>
-        <tr>
-          <td>{{ operation.description ? operation.description : "--" }}</td>
-          <td class="text-end">{{ operation.amount | currency }}</td>
-          <td>{{ getCurrencyDisplayName(operation.currency) }}</td>
-          <td>
-            {{ operation.category?.name ? operation.category?.name : "--" }}
-          </td>
-          <td>{{ operation.date | date : "dd/MM/yyyy" }}</td>
-          <td>{{ operation.user }}</td>
-          <td>
-            <div class="d-flex justify-content-around">
-              <p-button
-                icon="pi pi-trash"
-                severity="contrast"
-                (onClick)="promptDeleteOperation($event, operation.id)"
-              ></p-button>
-              <p-button
-                icon="pi pi-pencil"
-                severity="contrast"
-                (onClick)="editOperation(operation.id)"
-              ></p-button>
-            </div>
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
+    <div id="chart-container" class="card flex justify-center">
+      <p-chart type="pie" [data]="chartData" [options]="" />
+    </div>
   </div>
 </div>
 
 <p-confirmpopup />
 
-<app-new-operation-modal
-  [operationModalVisible]="operationModalVisible"
-  [currentOperationId]="currentOperationId"
-  #newOperationModal
-></app-new-operation-modal>
+<app-new-operation-modal #newOperationModal></app-new-operation-modal>

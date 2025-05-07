@@ -101,4 +101,8 @@ export class NavbarComponent {
     const control = this.newCategoryForm.get(field);
     return !control?.valid && control?.touched;
   }
+
+  navigateHome() {
+    this.router.navigate(['/home']);
+  }
 }

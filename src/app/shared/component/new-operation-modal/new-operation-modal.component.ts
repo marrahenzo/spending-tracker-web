@@ -46,10 +46,7 @@ export class NewOperationModalComponent {
   categoriesSignal = signalWithoutEquals(true);
   categories: CategoryResponse[] = [];
 
-  @Input()
   operationModalVisible: boolean = false;
-
-  @Input()
   currentOperationId: number = 0;
 
   constructor(

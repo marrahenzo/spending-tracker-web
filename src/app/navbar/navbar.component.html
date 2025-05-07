@@ -1,11 +1,21 @@
-<p-toolbar styleClass="no-border" class="no-border">
+<p-toolbar [style]="{ 'border-radius': '0', padding: '1rem 1rem 1rem 1.5rem' }">
+  <p-button
+    icon="pi pi-home"
+    class="mr-2"
+    label="Home"
+    text
+    severity="contrast"
+    [raised]="true"
+    (onClick)="navigateHome()"
+  >
+  </p-button>
   <ng-template #start>
     <p-button
       label="New Category"
       icon="pi pi-file-plus"
       class="mr-2"
       text
-      severity="secondary"
+      severity="contrast"
       (onClick)="openCategoryModal()"
       [raised]="true"
     />

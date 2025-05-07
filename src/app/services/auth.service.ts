@@ -11,9 +11,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(request: LoginRequest) {
-    return this.http.post(`${API_URL}/auth/login`, request, {
-      withCredentials: true,
-    });
+    return this.http.post(`${API_URL}/auth/login`, request);
   }
 
   signup(request: SignupRequest) {

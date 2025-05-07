@@ -19,3 +19,8 @@ export interface OperationRequest {
   category?: number;
   date?: string;
 }
+
+export interface AmountPerCategoryView {
+  category: string;
+  amount: number;
+}
